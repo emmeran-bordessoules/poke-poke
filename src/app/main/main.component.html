@@ -1,0 +1,39 @@
+<div class="page-container">
+  <div class="search-input-cart">
+    <mat-form-field>
+      <input matInput [(ngModel)]="filter" (change)="filterChanged()" placeholder="Search for a card">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(value)]="selectedType" (selectionChange)="filterChanged()" placeholder="Search for a type">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let type of types" value="{{type}}">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(value)]="selectedRarity" (selectionChange)="filterChanged()" placeholder="Search for a rarity">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let rarity of rarities" value="{{rarity}}">
+          {{rarity}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span (click)="openCart()" class="material-icons" matTooltip="Open cart">
+      shopping_cart
+    </span>
+  </div>
+  <div class="card-list">
+    <div
+      class="card-item"
+      *ngFor="let card of (cards$ | async).data">
+      <img class="card-image" alt="img-{{card.id}}" (click)="addCard(card)" src="{{card.images['small']}}"
+      matTooltip="Add this card to cart ({{card.price | number : '1.0-2'}}₽)"/>
+    </div>
+    <div *ngIf="!(cards$ | async).totalCount">Couldn't find any card that match those criterias</div>
+  </div>
+  <mat-paginator *ngIf="(cards$ | async).totalCount" [length]="(cards$ | async).totalCount"
+                  [pageIndex]="(cards$ | async).page - 1"
+                  (page)="pageChanged($event)">
+  </mat-paginator>
+</div>

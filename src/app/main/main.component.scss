@@ -1,0 +1,37 @@
+.page-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search-input-cart {
+    width: calc(100% - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+
+    .card-item {
+      margin: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .card-image {
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 5px 5px 6px rgb(0 0 0 / 45%);
+      }
+      .card-image:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+
+  .cart-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+
+    .cart-img-name {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 10px;
+
+      .cart-card-image {
+        max-width: 40px;
+        margin-right: 5px;
+      }
+    }
+
+    .cart-quantity {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .material-icons {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .cart-total {
+    margin-top: 5px;
+  }
+}
