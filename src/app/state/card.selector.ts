@@ -1,6 +1,6 @@
-import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { AppState } from "./app.state";
-import { CardCollection } from "../models/card-collection";
+import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { AppState } from './app.state';
+import { CardCollection } from '../models/card-collection';
 
 export const selectCollection = createSelector(
   (state: AppState) => state.collection,
@@ -10,7 +10,7 @@ export const selectCollection = createSelector(
 export const selectCollectionState = createFeatureSelector<
   AppState,
   CardCollection
->("collection");
+>('collection');
 
 export const selectCardCollection = createSelector(
   selectCollectionState,

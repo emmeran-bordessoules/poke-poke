@@ -8,9 +8,9 @@ export class Card {
     small: string,
     large: string
   };
-  public price :number;
+  public price: number;
 
-  public static FromApiToModel(data) {
+  public static FromApiToModel(data): Card {
     const card = new Card();
     card.id = data.id;
     card.name = data.name;

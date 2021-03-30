@@ -33,36 +33,36 @@ export class MainComponent implements OnInit {
     private store: Store
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCards();
     this.getFilters();
   }
 
-  public filterChanged() {
+  public filterChanged(): void {
     this.pageEvent ? this.pageEvent.pageIndex = 0 : noop();
     this.getCards();
   }
 
-  public pageChanged(event) {
+  public pageChanged(event): void {
     this.pageEvent = event;
     this.getCards();
   }
 
-  public addCard(card: Card) {
+  public addCard(card: Card): void {
     this.store.dispatch(addCard(card));
   }
 
-  public openCart() {
+  public openCart(): void {
     this.dialog.open(CartModalComponent);
   }
 
-  public getFilters() {
+  public getFilters(): void {
     this.cardsService.getRarities().subscribe(rarities => this.rarities = rarities.data);
 
     this.cardsService.getTypes().subscribe(types => this.types = types.data);
   }
 
-  public getCards() {
+  public getCards(): void {
     this.cardsService
       .getCards(this.filter, this.pageEvent, this.selectedRarity, this.selectedType)
       .subscribe((CardCollection) => this.store.dispatch(retrievedCardList(CardCollection)));

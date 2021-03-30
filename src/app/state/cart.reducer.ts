@@ -22,7 +22,7 @@ export const cartReducer = createReducer(
     } else if (index > -1){
       state = state.filter(x => x.card.id !== cardId);
     }
-    return state
+    return state;
   }),
   on(addCard, (state, card) => {
     const index = state.findIndex(x => x.card.id === card.id);
@@ -43,6 +43,6 @@ export const cartReducer = createReducer(
       item.card = card;
       state = [...state, item];
     }
-    return state
+    return state;
   })
 );

@@ -18,7 +18,7 @@ export class CardsService {
     const pageString = page ? '&page=' + (page.pageIndex + 1).toString() : '';
     let filterString = '';
     // Add the name, rarity or type to the URL
-    filterString = filter ? '&q=name:\"*' + filter.trim() + '*\"': filterString;
+    filterString = filter ? '&q=name:\"*' + filter.trim() + '*\"' : filterString;
     filterString = rarity ? filterString + (filterString === '' ? '&q=' : ' ') + 'rarity:\"' + rarity  + '\"' : filterString;
     filterString = type ? filterString + (filterString === '' ? '&q=' : ' ') + 'types:\"' + type  + '\"' : filterString;
     return this.http

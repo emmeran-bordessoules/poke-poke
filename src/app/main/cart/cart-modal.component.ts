@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Card } from 'src/app/models/card';
-import { map } from 'rxjs/operators';
 import { addCard, removeCard } from 'src/app/state/card.actions';
 import { selectCart } from 'src/app/state/cart.selector';
 
@@ -12,29 +11,29 @@ import { selectCart } from 'src/app/state/cart.selector';
 })
 export class CartModalComponent implements OnInit {
   cart$ = this.store.pipe(select(selectCart));
-  totalPrice: number = 0;
+  totalPrice = 0;
 
   constructor(
     private store: Store
   ) {}
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.countTotalPrice();
   }
 
-  public countTotalPrice() {
+  public countTotalPrice(): void {
     this.totalPrice = 0;
     this.cart$.subscribe(
       element => element.forEach(e => this.totalPrice += e.card.price * e.quantity)
     );
   }
 
-  public addCard(card: Card) {
+  public addCard(card: Card): void {
     this.store.dispatch(addCard(card));
     this.countTotalPrice();
   }
 
-  public removeCard(cardId: string) {
+  public removeCard(cardId: string): void {
     this.store.dispatch(removeCard({cardId}));
     this.countTotalPrice();
   }
